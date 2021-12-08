@@ -38,9 +38,9 @@ public class RecipientDataGenerator {
 
         public static UserInfo generateUser(String locale) {
             UserInfo user = new UserInfo(
-                RecipientDataGenerator.generateCity("ru"),
-                RecipientDataGenerator.generateName("ru"),
-                RecipientDataGenerator.generatePhone("ru")
+                RecipientDataGenerator.generateCity(locale),
+                RecipientDataGenerator.generateName(locale),
+                RecipientDataGenerator.generatePhone(locale)
             );
             return user;
         }
