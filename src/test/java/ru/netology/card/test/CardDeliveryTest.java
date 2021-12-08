@@ -7,6 +7,8 @@ import ru.netology.card.pageObject.NotificationsPageObject;
 import ru.netology.card.data.RecipientDataGenerator;
 import ru.netology.card.data.UserInfo;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -40,16 +42,16 @@ public class CardDeliveryTest {
         form.acceptAgreement();
         form.submitForm();
         // 1st submit check success
-        notifications.getSuccessTitle().shouldHave(text(successText));
+        notifications.getSuccessTitle().shouldHave(text(successText), Duration.ofSeconds(3));
         notifications.getSuccessContent().shouldHave(text(firstMeetingDate));
         // increase date as 10 days more from current
         form.enterDate(secondMeetingDate);
         form.submitForm();
         // check and submit replan
-        notifications.getReplanTitle().shouldHave(text(replanText));
+        notifications.getReplanTitle().shouldHave(text(replanText), Duration.ofSeconds(3));
         notifications.clickReplanButton();
         // check success
-        notifications.getSuccessTitle().shouldHave(text(successText));
+        notifications.getSuccessTitle().shouldHave(text(successText), Duration.ofSeconds(3));
         notifications.getSuccessContent().shouldHave(text(secondMeetingDate));
     }
 }
