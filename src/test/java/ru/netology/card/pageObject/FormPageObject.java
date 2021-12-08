@@ -1,4 +1,4 @@
-package ru.netology.card;
+package ru.netology.card.pageObject;
 
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.Keys;
