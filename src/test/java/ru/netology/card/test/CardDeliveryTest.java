@@ -1,5 +1,9 @@
 package ru.netology.card.test;
 
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.card.pageObject.FormPageObject;
@@ -16,13 +20,24 @@ public class CardDeliveryTest {
     String successText;
     String replanText;
 
-    public CardDeliveryTest() {
-        successText = "Успешно!";
-        replanText = "Необходимо подтверждение";
+    @BeforeAll
+    static void setUpAll() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
     }
+
+    @AfterAll
+    static void tearDownAll() {
+        SelenideLogger.removeListener("allure");
+    }
+
     @BeforeEach
     void openBrowser() {
         open("http://localhost:9999");
+    }
+
+    public CardDeliveryTest() {
+        successText = "Успешно!";
+        replanText = "Необходимо подтверждение";
     }
 
     @Test
